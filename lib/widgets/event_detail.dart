@@ -33,6 +33,7 @@ class EventDetailDialog extends StatelessWidget {
                       TextButton(
                         onPressed: () async {
                           await Clipboard.setData(ClipboardData(text: a.url));
+                          if (!context.mounted) return;
                           Navigator.pop(context);
                           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Attachment URL copied')));
                         },

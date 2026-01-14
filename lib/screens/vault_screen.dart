@@ -16,7 +16,7 @@ class VaultScreen extends StatelessWidget {
         return ListView.separated(
           padding: const EdgeInsets.all(12),
           itemCount: files.length,
-          separatorBuilder: (_, __) => const SizedBox(height: 8),
+          separatorBuilder: (context, index) => const SizedBox(height: 8),
           itemBuilder: (context, i) {
             final f = files[i];
             return ListTile(

@@ -34,7 +34,7 @@ class _LiveFeedWidgetState extends State<LiveFeedWidget> {
         return ListView.separated(
           padding: const EdgeInsets.all(12),
           itemCount: events.length,
-          separatorBuilder: (_, __) => const SizedBox(height: 8),
+          separatorBuilder: (context, index) => const SizedBox(height: 8),
           itemBuilder: (context, i) {
             final e = events[i];
             return Card(
@@ -43,7 +43,7 @@ class _LiveFeedWidgetState extends State<LiveFeedWidget> {
                 subtitle: Text('${e.timestamp} • ${e.locationSummary}'),
                 trailing: e.hasAttachment ? const Icon(Icons.attachment) : null,
                 onTap: () async {
-                  showDialog(context: context, builder: (_) => EventDetailDialog(event: e));
+                  showDialog(context: context, builder: (context) => EventDetailDialog(event: e));
                 },
               ),
             );

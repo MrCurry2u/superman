@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'signature_screen.dart';
 
 class ConsentScreen extends StatefulWidget {
   const ConsentScreen({super.key});
@@ -78,6 +77,7 @@ Platform Architecture by Jerry AnTae Curry, Sr., MBA, PhD Candidate.
   Future<void> _acceptTerms() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('accepted_terms', true);
+    if (!mounted) { return; }
     Navigator.of(context).pushReplacementNamed('/login');
   }
 

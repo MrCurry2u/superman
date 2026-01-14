@@ -48,11 +48,14 @@ class _StartupState extends State<Startup> {
     try {
       final prefs = await SharedPreferences.getInstance();
       final accepted = prefs.getBool('accepted_terms') ?? false;
-      if (!mounted) return;
-      if (accepted) Navigator.of(context).pushReplacementNamed('/login');
-      else Navigator.of(context).pushReplacementNamed('/consent');
+      if (!mounted) { return; }
+      if (accepted) {
+        Navigator.of(context).pushReplacementNamed('/login');
+      } else {
+        Navigator.of(context).pushReplacementNamed('/consent');
+      }
     } catch (_) {
-      if (mounted) Navigator.of(context).pushReplacementNamed('/login');
+      if (mounted) { Navigator.of(context).pushReplacementNamed('/login'); }
     }
   }
 

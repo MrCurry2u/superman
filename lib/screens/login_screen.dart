@@ -24,6 +24,7 @@ class LoginScreen extends StatelessWidget {
                 // In a real app, call local_auth and handle fallback.
                 final prefs = await SharedPreferences.getInstance();
                 final accepted = prefs.getBool('accepted_terms') ?? false;
+                if (!context.mounted) return;
                 if (accepted) {
                   Navigator.of(context).pushReplacementNamed('/case');
                 } else {
@@ -36,6 +37,7 @@ class LoginScreen extends StatelessWidget {
               onPressed: () async {
                 final prefs = await SharedPreferences.getInstance();
                 final accepted = prefs.getBool('accepted_terms') ?? false;
+                if (!context.mounted) return;
                 if (accepted) {
                   Navigator.of(context).pushReplacementNamed('/case');
                 } else {
